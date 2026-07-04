@@ -22,9 +22,14 @@
             sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
           },
           colors: {
-            ink: '#05070d',
-            navy: '#0a0f1f',
-            amber: '#f5a623',
+            // Light, bird-inspired palette — tones sampled from the sage-green
+            // and teal plumage in the hero photograph, softened for an airy feel.
+            mist: '#f2f6f3', // page background — palest sage-white
+            fog: '#e7eee9', // secondary surface / gradient midpoint
+            pine: '#1f2d27', // primary text — deep plumage green
+            sage: '#4f8069', // primary accent — soft bird green
+            mint: '#88bfa4', // lighter accent glow
+            sheen: '#5f9494', // secondary accent — teal sheen
           },
         },
       },
@@ -32,9 +37,9 @@
   </script>
 
   <style>
-    :root { color-scheme: dark; }
+    :root { color-scheme: light; }
 
-    html, body { background-color: #05070d; }
+    html, body { background-color: #f2f6f3; }
 
     body {
       -webkit-font-smoothing: antialiased;
@@ -42,12 +47,12 @@
       letter-spacing: -0.01em;
     }
 
-    /* Cinematic hero gradient — deep navy with an amber horizon glow */
+    /* Airy hero gradient — pale sage wash with a soft green horizon glow */
     .hero-gradient {
       background:
-        radial-gradient(120% 90% at 50% 8%, rgba(245, 166, 35, 0.22) 0%, rgba(245, 166, 35, 0.05) 30%, transparent 55%),
-        radial-gradient(140% 120% at 50% 120%, rgba(20, 184, 166, 0.14) 0%, transparent 55%),
-        linear-gradient(180deg, #05070d 0%, #0a0f1f 45%, #05070d 100%);
+        radial-gradient(120% 90% at 50% 8%, rgba(79, 128, 105, 0.16) 0%, rgba(136, 191, 164, 0.05) 30%, transparent 55%),
+        radial-gradient(140% 120% at 50% 120%, rgba(95, 148, 148, 0.12) 0%, transparent 55%),
+        linear-gradient(180deg, #f2f6f3 0%, #e7eee9 45%, #f2f6f3 100%);
     }
 
     /* Hero background photo (bird image, per client request) */
@@ -67,7 +72,7 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: radial-gradient(120% 120% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+      background: radial-gradient(120% 120% at 50% 40%, transparent 55%, rgba(31, 45, 39, 0.28) 100%);
     }
 
     /* Scroll-reveal base + active states */
@@ -83,9 +88,17 @@
       transform: translateY(0) scale(1);
     }
 
-    /* Gradient text for accent headlines */
+    /* Gradient text for accent headlines on light surfaces */
     .text-gradient {
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      background: linear-gradient(180deg, #1f2d27 0%, #4f8069 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Light gradient variant for headlines set over the hero photograph */
+    .text-gradient-light {
+      background: linear-gradient(180deg, #ffffff 0%, #d7e6dd 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -115,21 +128,21 @@
   </style>
 </head>
 
-<body class="bg-ink text-slate-100 font-sans antialiased selection:bg-amber/30 selection:text-white">
+<body class="bg-mist text-pine font-sans antialiased selection:bg-sage/25 selection:text-pine">
 
   <!-- ============ NAV ============ -->
-  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-ink/60 border-b border-white/5">
+  <header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-mist/70 border-b border-pine/10">
     <nav class="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-2 font-semibold tracking-tight">
-        <svg viewBox="0 0 24 24" class="w-6 h-6 text-amber" fill="currentColor" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="w-6 h-6 text-sage" fill="currentColor" aria-hidden="true">
           <path d="M22 5.5c-2.6.4-4 .2-6 1.3-1.6.9-2.7 2.4-3.4 4-.6-2-2.2-3.6-4.6-4C4.4 6.4 2.7 7 2 7.6c1.9.2 3 .9 3.7 2 .7 1.2.6 2.6.2 3.9-.5 1.7-.2 3.4 1 4.7 1.4 1.5 3.6 1.9 5.6 1.2 3.6-1.3 5.9-4.7 7-8.2.6-2 1.2-4 2.5-5.7z"/>
         </svg>
         <span>Take&nbsp;Flight</span>
       </a>
-      <div class="hidden sm:flex items-center gap-8 text-sm text-slate-300">
-        <a href="#birds" class="hover:text-white transition-colors">Birds</a>
-        <a href="#stat" class="hover:text-white transition-colors">Discover</a>
-        <a href="#footer" class="hover:text-white transition-colors">About</a>
+      <div class="hidden sm:flex items-center gap-8 text-sm text-pine/70">
+        <a href="#birds" class="hover:text-sage transition-colors">Birds</a>
+        <a href="#stat" class="hover:text-sage transition-colors">Discover</a>
+        <a href="#footer" class="hover:text-sage transition-colors">About</a>
       </div>
     </nav>
   </header>
@@ -148,28 +161,28 @@
     </svg>
 
     <div class="relative z-10 px-6 text-center max-w-4xl">
-      <p class="reveal text-amber font-medium tracking-[0.3em] uppercase text-xs sm:text-sm mb-6">
+      <p class="reveal text-mint font-medium tracking-[0.3em] uppercase text-xs sm:text-sm mb-6">
         The Sky, Reimagined
       </p>
-      <h1 class="reveal text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-gradient">
+      <h1 class="reveal text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-[0.95] text-gradient-light">
         Take Flight
       </h1>
-      <p class="reveal mt-8 text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+      <p class="reveal mt-8 text-lg sm:text-xl text-white/85 font-light max-w-2xl mx-auto leading-relaxed">
         A cinematic journey through the world's most extraordinary birds — where
         precision, power, and grace share the same open sky.
       </p>
       <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#birds" class="px-8 py-3.5 rounded-full bg-amber text-ink font-semibold hover:bg-amber/90 transition-all hover:scale-[1.03] shadow-lg shadow-amber/20">
+        <a href="#birds" class="px-8 py-3.5 rounded-full bg-sage text-white font-semibold hover:bg-sage/90 transition-all hover:scale-[1.03] shadow-lg shadow-sage/30">
           Meet the Birds
         </a>
-        <a href="#stat" class="px-8 py-3.5 rounded-full border border-white/15 text-slate-200 font-medium hover:bg-white/5 transition-colors">
+        <a href="#stat" class="px-8 py-3.5 rounded-full border border-white/25 text-white/90 font-medium hover:bg-white/10 transition-colors">
           Did You Know?
         </a>
       </div>
     </div>
 
     <!-- Scroll cue -->
-    <a href="#birds" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-slate-400" aria-label="Scroll down">
+    <a href="#birds" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/70" aria-label="Scroll down">
       <span class="text-[11px] tracking-[0.25em] uppercase">Scroll</span>
       <svg class="scroll-cue w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
@@ -184,7 +197,7 @@
         <h2 class="reveal text-4xl sm:text-5xl font-bold tracking-tight text-gradient">
           Masters of the air.
         </h2>
-        <p class="reveal mt-5 text-lg text-slate-400 font-light leading-relaxed">
+        <p class="reveal mt-5 text-lg text-pine/60 font-light leading-relaxed">
           Four species, four philosophies of flight. Each one perfected over
           millions of years of evolution.
         </p>
@@ -192,56 +205,125 @@
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <!-- Card: Eagle -->
-        <article class="reveal group relative rounded-3xl p-8 bg-white/[0.03] border border-white/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-amber/40 hover:shadow-2xl hover:shadow-amber/10">
-          <div class="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-amber/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative w-14 h-14 rounded-2xl bg-amber/15 flex items-center justify-center text-amber mb-6">
+        <article class="reveal group relative rounded-3xl p-8 bg-white/70 border border-pine/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-sage/50 hover:shadow-2xl hover:shadow-sage/10">
+          <div class="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-sage/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative w-14 h-14 rounded-2xl bg-sage/15 flex items-center justify-center text-sage mb-6">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3 6 6 1-4.5 4 1.3 6.2L12 16.9 6.2 19.2 7.5 13 3 9l6-1z"/></svg>
           </div>
           <h3 class="relative text-xl font-semibold mb-2">Golden Eagle</h3>
-          <p class="relative text-sm text-slate-400 leading-relaxed">
+          <p class="relative text-sm text-pine/70 leading-relaxed">
             A wingspan over two metres and eyesight eight times sharper than ours.
             The undisputed sovereign of mountain skies.
           </p>
         </article>
 
         <!-- Card: Hummingbird -->
-        <article class="reveal group relative rounded-3xl p-8 bg-white/[0.03] border border-white/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-teal-400/40 hover:shadow-2xl hover:shadow-teal-500/10">
+        <article class="reveal group relative rounded-3xl p-8 bg-white/70 border border-pine/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-teal-500/40 hover:shadow-2xl hover:shadow-teal-500/10">
           <div class="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-teal-400/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative w-14 h-14 rounded-2xl bg-teal-400/15 flex items-center justify-center text-teal-300 mb-6">
+          <div class="relative w-14 h-14 rounded-2xl bg-teal-400/15 flex items-center justify-center text-teal-600 mb-6">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg>
           </div>
           <h3 class="relative text-xl font-semibold mb-2">Hummingbird</h3>
-          <p class="relative text-sm text-slate-400 leading-relaxed">
+          <p class="relative text-sm text-pine/70 leading-relaxed">
             Wings beating up to 80 times a second, hovering with impossible
             stillness. The only bird that can fly backwards.
           </p>
         </article>
 
         <!-- Card: Owl -->
-        <article class="reveal group relative rounded-3xl p-8 bg-white/[0.03] border border-white/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-indigo-400/40 hover:shadow-2xl hover:shadow-indigo-500/10">
+        <article class="reveal group relative rounded-3xl p-8 bg-white/70 border border-pine/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-indigo-400/40 hover:shadow-2xl hover:shadow-indigo-500/10">
           <div class="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-indigo-400/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative w-14 h-14 rounded-2xl bg-indigo-400/15 flex items-center justify-center text-indigo-300 mb-6">
+          <div class="relative w-14 h-14 rounded-2xl bg-indigo-400/15 flex items-center justify-center text-indigo-500 mb-6">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a7 7 0 00-7 7v4a7 7 0 0014 0v-4a7 7 0 00-7-7zm-3 8a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm6 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
           </div>
           <h3 class="relative text-xl font-semibold mb-2">Great Grey Owl</h3>
-          <p class="relative text-sm text-slate-400 leading-relaxed">
+          <p class="relative text-sm text-pine/70 leading-relaxed">
             Silent flight and hearing so precise it can strike prey hidden beneath
             30 centimetres of snow. A ghost of the northern forest.
           </p>
         </article>
 
         <!-- Card: Peregrine Falcon -->
-        <article class="reveal group relative rounded-3xl p-8 bg-white/[0.03] border border-white/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-rose-400/40 hover:shadow-2xl hover:shadow-rose-500/10">
+        <article class="reveal group relative rounded-3xl p-8 bg-white/70 border border-pine/10 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-rose-400/40 hover:shadow-2xl hover:shadow-rose-500/10">
           <div class="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-rose-400/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative w-14 h-14 rounded-2xl bg-rose-400/15 flex items-center justify-center text-rose-300 mb-6">
+          <div class="relative w-14 h-14 rounded-2xl bg-rose-400/15 flex items-center justify-center text-rose-500 mb-6">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3l9 3 9-3-4 9 4 9-9-3-9 3 4-9z"/></svg>
           </div>
           <h3 class="relative text-xl font-semibold mb-2">Peregrine Falcon</h3>
-          <p class="relative text-sm text-slate-400 leading-relaxed">
+          <p class="relative text-sm text-pine/70 leading-relaxed">
             The fastest animal alive. In a hunting dive it exceeds 380&nbsp;km/h —
             faster than a Formula 1 car at full throttle.
           </p>
         </article>
+      </div>
+
+      <!-- Field notes: expanded species detail -->
+      <div class="mt-24 sm:mt-28 max-w-3xl">
+        <p class="reveal text-sage font-medium tracking-[0.3em] uppercase text-xs sm:text-sm mb-6">Field Notes</p>
+        <h3 class="reveal text-3xl sm:text-4xl font-bold tracking-tight text-gradient">
+          A closer look at four lives on the wing.
+        </h3>
+        <p class="reveal mt-5 text-lg text-pine/60 font-light leading-relaxed">
+          Beyond the headline feats, each of these species tells a longer story —
+          of where it lives, how it hunts, and the quiet adaptations that make its
+          flight possible.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-10 sm:grid-cols-2 max-w-5xl">
+        <!-- Golden Eagle detail -->
+        <div class="reveal">
+          <h4 class="text-lg font-semibold">Golden Eagle</h4>
+          <p class="mt-1 text-sm italic text-sage">Aquila chrysaetos</p>
+          <p class="mt-3 text-sm text-pine/70 leading-relaxed">
+            A bird of open, mountainous country across the Northern Hemisphere,
+            from the Scottish Highlands to the American Rockies. Mated pairs defend
+            territories that can span a hundred square kilometres, riding thermals
+            for hours as they scan the slopes below for hares and marmots. Their
+            cliffside eyries are built of branches and reused — and enlarged — for
+            generations.
+          </p>
+        </div>
+
+        <!-- Hummingbird detail -->
+        <div class="reveal">
+          <h4 class="text-lg font-semibold">Hummingbird</h4>
+          <p class="mt-1 text-sm italic text-sage">family Trochilidae</p>
+          <p class="mt-3 text-sm text-pine/70 leading-relaxed">
+            Found only in the Americas, from the forests of Alaska to the tip of
+            Tierra del Fuego, and nowhere more diverse than the tropical Andes.
+            A heart that races past 1,200 beats a minute demands enormous fuel, so
+            they feed on nectar and small insects almost constantly — then, on cold
+            nights, drop into a deep torpor that slows the body to a near standstill
+            until dawn.
+          </p>
+        </div>
+
+        <!-- Great Grey Owl detail -->
+        <div class="reveal">
+          <h4 class="text-lg font-semibold">Great Grey Owl</h4>
+          <p class="mt-1 text-sm italic text-sage">Strix nebulosa</p>
+          <p class="mt-3 text-sm text-pine/70 leading-relaxed">
+            A phantom of the boreal forest, ranging across the far north of both
+            North America and Eurasia. Its broad facial disc works like a radar
+            dish, funnelling the faintest sound to ears set at slightly different
+            heights — a trick that lets it pinpoint voles moving beneath the snow
+            and plunge, talons first, through the crust to reach them.
+          </p>
+        </div>
+
+        <!-- Peregrine Falcon detail -->
+        <div class="reveal">
+          <h4 class="text-lg font-semibold">Peregrine Falcon</h4>
+          <p class="mt-1 text-sm italic text-sage">Falco peregrinus</p>
+          <p class="mt-3 text-sm text-pine/70 leading-relaxed">
+            The most widespread raptor on Earth, at home on every continent but
+            Antarctica — and increasingly on city skyscrapers, which stand in for
+            the sea cliffs it once favoured. In its hunting stoop it folds into a
+            teardrop and dives; bony baffles in its nostrils tame the rush of air,
+            letting it breathe at speeds that would collapse another bird's lungs.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -251,13 +333,13 @@
     <div class="relative h-[130vh]">
       <div class="sticky top-0 h-screen flex items-center justify-center overflow-hidden hero-gradient vignette">
         <div class="relative z-10 text-center px-6 max-w-4xl">
-          <p class="reveal text-amber font-medium tracking-[0.3em] uppercase text-xs sm:text-sm mb-8">Did You Know?</p>
+          <p class="reveal text-sage font-medium tracking-[0.3em] uppercase text-xs sm:text-sm mb-8">Did You Know?</p>
           <p class="reveal text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-gradient">
             The Arctic Tern flies
-            <span class="text-amber">70,000&nbsp;km</span>
+            <span class="text-sage">70,000&nbsp;km</span>
             every year.
           </p>
-          <p class="reveal mt-8 text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
+          <p class="reveal mt-8 text-lg sm:text-xl text-pine/70 font-light max-w-2xl mx-auto leading-relaxed">
             From pole to pole and back again — the longest migration on Earth. Over a
             lifetime, that's three round-trips to the Moon.
           </p>
@@ -267,20 +349,20 @@
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer id="footer" class="border-t border-white/5 bg-ink py-16 px-6">
+  <footer id="footer" class="border-t border-pine/10 bg-fog py-16 px-6">
     <div class="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-8">
-      <div class="flex items-center gap-3">
-        <svg viewBox="0 0 24 24" class="w-7 h-7 text-amber" fill="currentColor" aria-hidden="true">
+      <div class="reveal flex items-center gap-3">
+        <svg viewBox="0 0 24 24" class="w-7 h-7 text-sage" fill="currentColor" aria-hidden="true">
           <path d="M22 5.5c-2.6.4-4 .2-6 1.3-1.6.9-2.7 2.4-3.4 4-.6-2-2.2-3.6-4.6-4C4.4 6.4 2.7 7 2 7.6c1.9.2 3 .9 3.7 2 .7 1.2.6 2.6.2 3.9-.5 1.7-.2 3.4 1 4.7 1.4 1.5 3.6 1.9 5.6 1.2 3.6-1.3 5.9-4.7 7-8.2.6-2 1.2-4 2.5-5.7z"/>
         </svg>
         <span class="text-lg font-semibold tracking-tight">Take Flight</span>
       </div>
-      <p class="text-sm text-slate-500 text-center sm:text-right">
+      <p class="reveal text-sm text-pine/50 text-center sm:text-right">
         A celebration of birds in flight.<br class="sm:hidden" />
         Crafted with light, motion, and a little awe.
       </p>
     </div>
-    <p class="mx-auto max-w-7xl mt-10 text-xs text-slate-600">© 2026 Take Flight. All imagery rendered in pure CSS &amp; SVG.</p>
+    <p class="reveal mx-auto max-w-7xl mt-10 text-xs text-pine/40">© 2026 Take Flight. All imagery rendered in pure CSS &amp; SVG.</p>
   </footer>
 
   <!-- ============ JS: scroll reveal via IntersectionObserver ============ -->
