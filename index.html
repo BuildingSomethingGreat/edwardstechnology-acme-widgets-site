@@ -119,10 +119,26 @@
     .bird-drift { animation: drift 18s ease-in-out infinite alternate; }
     .bird-drift-slow { animation: drift 26s ease-in-out infinite alternate; }
 
+    /* Continuously scrolling mantra marquee */
+    .marquee__track {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      will-change: transform;
+      animation: marquee 32s linear infinite;
+    }
+    /* Two identical groups sit end to end; shifting one full group width
+       (-50% of the track) loops seamlessly. */
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
       .scroll-cue, .bird-drift, .bird-drift-slow { animation: none; }
+      .marquee__track { animation: none; }
       #top.hero-gradient { background-attachment: scroll; }
     }
   </style>
@@ -188,6 +204,36 @@
         <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </a>
+  </section>
+
+  <!-- ============ MARQUEE — bird mantra ============ -->
+  <!-- PLACEHOLDER: the client did not supply the exact mantra wording.
+       Confirm the final text with the client before publishing. -->
+  <section aria-label="Bird mantra" class="overflow-hidden bg-pine text-mist py-4 border-y border-pine/20">
+    <div class="marquee__track">
+      <!-- Group 1 (read by screen readers) -->
+      <span class="flex items-center shrink-0 text-sm sm:text-base font-semibold uppercase tracking-[0.3em]">
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+      </span>
+      <!-- Group 2 (visual duplicate for a seamless loop) -->
+      <span class="flex items-center shrink-0 text-sm sm:text-base font-semibold uppercase tracking-[0.3em]" aria-hidden="true">
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+        <span class="px-8">THE BIRD MANTRA GOES HERE</span>
+        <svg class="w-5 h-5 text-mint shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12c3-4 5-4 10 0 5-4 7-4 10 0" stroke-linecap="round" /></svg>
+      </span>
+    </div>
   </section>
 
   <!-- ============ FEATURED BIRDS ============ -->
